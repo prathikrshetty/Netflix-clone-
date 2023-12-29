@@ -10,7 +10,7 @@ export default function Movie() {
 
 
   
-  const [openModal,setOpenModal] = useState(false);
+  const [open,setOpen] = useState(false);
   const [selectedUser ,setselectedUser] = useState('')
   const [userMovies,setUserMovies]=useState('')
 
@@ -21,12 +21,10 @@ export default function Movie() {
   }
 
   const handleDelete = (id)=>{
-    setOpenModal(true)
+    setOpen(true)
     setselectedUser(id)
   }
-  const handleCloseModel = () => {
-    setOpenModal(false);
-  }
+
   
 
   
@@ -84,13 +82,16 @@ export default function Movie() {
       </div>
   
 <div>
-<Modal open={openModal} onClose={handleCloseModel}>
+
         <div>
-          <Button className='btn btn-danger' onClick={() => handleSingleView(selectedUser)}>View</Button>
-          <Button className='btn btn-danger' onClick={() => handleDelete(selectedUser)}>Delete</Button>
+          <Button className='btn btn-danger' onClick={() => handleSingleView(value.u_id)}>View</Button>
+          <Button className='btn btn-danger' onClick={() => handleDelete(value.u_id)}>Delete</Button>
         </div>
-      </Modal>
+    
 </div>
+  <Modal open={open}>
+  <Delete setData={setData} data={data} setOpen={setOpen} selectedUser={selectedUser}/>
+  </Modal>
 
     </div>
     
