@@ -10,25 +10,25 @@ export default function Movie() {
 
 
   
-  const [openModal,setOpenModal] = useState(false);
+  
+  const [open,setOpen] = useState(false);
   const [selectedUser ,setselectedUser] = useState('')
-  const [userMovies,setUserMovies]=useState('')
+  const [open2,setOpen2]=useState(false);
+  const[data,setData]=useState([])
 
 
   const handleSingleView = (id)=>{
-    setOpenModal(true)
+    setOpen(true)
     setselectedUser(id)
   }
 
   const handleDelete = (id)=>{
-    setOpenModal(true)
+    setOpen2(true)
     setselectedUser(id)
   }
-  const handleCloseModel = () => {
-    setOpenModal(false);
-  }
+ 
   
-
+const handleClose = () =>{setOpen(false);setOpen2(false)}
   
     useEffect(()=>{
         setUserMovies(JSON.parse(localStorage.getItem('Movie')))
@@ -45,12 +45,12 @@ export default function Movie() {
       <div className="row">
 
         <h2 className=" text-white title">Trending</h2>
-        {userMovies?.map((Value,index) =>(
+        {data?.map((Value,index) =>(
 
         
         <div className="col" key={index}>
           <div className="row_posters">
-        
+          {value.Name}
           <img
                 className="row__poster row__posterLarge" 
                 src='https://www.themoviedb.org/t/p/w300_and_h450_bestv2/ePquoeNxJ6vg8U7iSjRAZ2KdztX.jpg'
@@ -75,7 +75,7 @@ export default function Movie() {
   }}
 
 />
-
+  {value.links}
           
 
           </div>
@@ -84,14 +84,19 @@ export default function Movie() {
       </div>
   
 <div>
-<Modal open={openModal} onClose={handleCloseModel}>
-        <div>
-          <Button className='btn btn-danger' onClick={() => handleSingleView(selectedUser)}>View</Button>
-          <Button className='btn btn-danger' onClick={() => handleDelete(selectedUser)}>Delete</Button>
-        </div>
-      </Modal>
-</div>
 
+        <div>
+          <Button className='btn btn-danger' onClick={() => handleSingleView(value.u_id)}>View</Button>
+          <Button className='btn btn-danger' onClick={() => handleDelete(value.u_id)}>Delete</Button>
+        </div>
+      
+</div>
+<Modal   onClose={handleClose} open={open}>
+   <Delete setData={setData} data={data} setOpen={setOpen} selectedUser={selectedUser}/>
+  </Modal>
+  <Modal   onClose={handleClose} open={open1}>
+  <Singleview data={data} selectedUser={selectedUser} />
+  </Modal>
     </div>
     
     
