@@ -26,7 +26,7 @@ const Reg = () => {
     const newUserId = value.length === 0 ? 1 : value[value.length - 1].u_id + 1;
     const details = {
       u_id: newUserId,
-      ...data,
+      ...user,
     };
     const updatedValue = [...value, details];
     setValue(updatedValue);
