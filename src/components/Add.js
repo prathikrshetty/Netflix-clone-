@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Reg = () => {
   let initialValue;
   if (localStorage.getItem('Movies') == null) {
     initialValue = [];
   } else {
-    initialValue = JSON.parse(localStorage.getItem('Movies')) ??[];
+    initialValue = JSON.parse(localStorage.getItem('Movies')) ;
   }
 
   const [value, setValue] = useState(initialValue);
   const [data, setData] = useState({});
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setData({
       ...data,
@@ -19,7 +20,7 @@ const Reg = () => {
     console.log(data)
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
           
     const newUserId = value.length === 0 ? 1 : value[value.length - 1].u_id + 1;
@@ -30,6 +31,7 @@ const Reg = () => {
     const updatedValue = [...value, details];
     setValue(updatedValue);
     localStorage.setItem('Movies', JSON.stringify(updatedValue));
+    await navigate('/Movie')
   };
 
   return (
@@ -42,14 +44,14 @@ const Reg = () => {
             className="form-control"
             type="text"
             placeholder="name"
-            name="name"
+            name="Name"
             onChange={handleChange}
           />
           <input
             className="form-control"
             type="text"
             placeholder="Links"
-            name="Links"
+            name="Image"
             onChange={handleChange}
           />
        

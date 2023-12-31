@@ -89,10 +89,17 @@ console.log(aaa,"aaaaaaaaaaaaa")
 
       <CardMedia
         component="img"
-        height="194"
+        height="0"
+        
         // image="/static/images/cards/paella.jpg"
         // alt="Paella dish"
       />
+         <img
+                className="row__poster row__posterLarge"
+                src={value.Image} style={{width:'400px',height:'400px'}}
+                alt=""
+               
+              />
       <CardContent>
         {/* <Typography variant="body2" color="text.secondary">
           This impressive paella is a perfect party dish and a fun meal to cook

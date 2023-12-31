@@ -7,7 +7,7 @@ import HomeBanner from './components/HomeBanner';
 import Login from './components/Login'
 import Reg from './components/Reg';
 import Banner from './components/Banner'
-import  List  from './components/List';
+
 import  Add from   './components/Add'
 import Movie from './components/Movie';
 
@@ -72,6 +72,13 @@ export default function Router() {
     <List title="Upcoming" param="upcoming"/> */}
     </React.Fragment>
     } />
+    {/* <Route path='/Movie' element={
+    <React.Fragment>
+        <Header/>
+        
+        
+    </React.Fragment>
+    } /> */}
 </Routes>
 </BrowserRouter>
 
