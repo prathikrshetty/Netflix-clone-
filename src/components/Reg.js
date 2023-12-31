@@ -5,27 +5,27 @@ const Reg = () => {
   if (localStorage.getItem('Shettyy') == null) {
     initialValue = [];
   } else {
-    initialValue = JSON.parse(localStorage.getItem('Shettyy')) || [];
+    initialValue = JSON.parse(localStorage.getItem('Shettyy')) ??[];
   }
 
   const [value, setValue] = useState(initialValue);
-  const [data, setData] = useState({});
+  const [Register, setRegister] = useState({});
 
   const handleChange = (e) => {
-    setData({
-      ...data,
+    setRegister({
+      ...Register,
       [e.target.name]: e.target.value,
     });
-    console.log(data)
+    console.log(Register)
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
           
     const newUserId = value.length === 0 ? 1 : value[value.length - 1].u_id + 1;
     const details = {
-      u_id: newUserId,
-      ...data,
+      u_id: UserId,
+      ...Register,
     };
     const updatedValue = [...value, details];
     setValue(updatedValue);
