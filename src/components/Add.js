@@ -10,14 +10,14 @@ const Reg = () => {
   }
 
   const [value, setValue] = useState(initialValue);
-  const [data, setData] = useState({});
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
   const handleChange = (e) => {
-    setData({
-      ...data,
+    setUser({
+      ...user,
       [e.target.name]: e.target.value,
     });
-    console.log(data)
+    console.log(user)
   };
 
   const handleSubmit = async (e) => {
