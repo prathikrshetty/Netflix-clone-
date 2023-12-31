@@ -5,7 +5,7 @@ const Reg = () => {
   if (localStorage.getItem('Shettyy') == null) {
     initialValue = [];
   } else {
-    initialValue = JSON.parse(localStorage.getItem('Shettyy')) ??[];
+    initialValue = JSON.parse(localStorage.getItem('Shettyy')) || [];
   }
 
   const [value, setValue] = useState(initialValue);
