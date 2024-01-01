@@ -5,9 +5,9 @@ const Reg = () => {
   if (localStorage.getItem('Shettyy') == null) {
     initialValue = [];
   } else {
-    initialValue = JSON.parse(localStorage.getItem('Shettyy')) ??[];
+    initialValue = JSON.parse(localStorage.getItem('Shettyy')) || [];
   }
-
+  
   const [value, setValue] = useState(initialValue);
   const [Register, setRegister] = useState({});
 
@@ -22,7 +22,7 @@ const Reg = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
           
-    const newUserId = value.length === 0 ? 1 : value[value.length - 1].u_id + 1;
+    const UserId = value.length === 0 ? 1 : value[value.length - 1].u_id + 1;
     const details = {
       u_id: UserId,
       ...Register,

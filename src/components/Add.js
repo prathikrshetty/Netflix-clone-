@@ -6,7 +6,7 @@ const Reg = () => {
   if (localStorage.getItem('Movies') == null) {
     initialValue = [];
   } else {
-    initialValue = JSON.parse(localStorage.getItem('Movies')) ;
+    initialValue = JSON.stringify(localStorage.getItem('Movies')) ;
   }
 
   const [value, setValue] = useState(initialValue);
@@ -31,7 +31,7 @@ const Reg = () => {
     const updatedValue = [...value, details];
     setValue(updatedValue);
     localStorage.setItem('Movies', JSON.stringify(updatedValue));
-    await navigate('/Movie')
+    await navigate('/dashboard')
   };
 
   return (
